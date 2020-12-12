@@ -1,0 +1,35 @@
+.single-todo {
+    position: relative;
+    box-shadow: 2px 2px 2px 2px #ccc;
+    /* background-color: #f4f4f4; */
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.single-todo h3 {
+    font-size: 18px;
+    text-transform: capitalize;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.single-todo h3.done {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+.single-todo button {
+    background-color: transparent;
+    position: absolute;
+    top: 38%;
+    right: 5px;
+    border: none;
+    padding: 1px;
+    cursor: pointer;
+}
+
+.single-todo button:hover {
+    box-shadow: 0 2px 2px #eeeeee;
+}

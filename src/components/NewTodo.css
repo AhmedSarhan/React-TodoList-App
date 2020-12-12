@@ -1,0 +1,23 @@
+.new-todo {
+    position: relative;
+}
+
+.new-todo label {
+    display: block;
+    /* text-align: right; */
+}
+
+.new-todo input[type=text] {
+    padding: 3px 8px;
+    margin-top: 10px;
+}
+
+.new-todo button[type=submit] {
+    position: absolute;
+    top: 55%;
+    right: 0;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
