@@ -7,8 +7,30 @@ import TodoList from './components/TodoList';
 import NewTodo from './components/NewTodo';
 
 const App: React.FC = () => {
+  let dummyTodos: any[] = [
+    {
+      id: (Math.random() * 1000).toString(),
+      text: 'Buy the Groceries',
+      done: false,
+    },
+    {
+      id: (Math.random() * 1000).toString(),
+      text: 'Watch a Movie',
+      done: false,
+    },
+    {
+      id: (Math.random() * 1000).toString(),
+      text: 'Take my Morning Run',
+      done: true,
+    },
+    {
+      id: (Math.random() * 1000).toString(),
+      text: 'Have BreakFast',
+      done: true,
+    },
+  ];
   const localData: any = localStorage.getItem('todos');
-  const todos: any[] = localData ? JSON.parse(localData) : [];
+  const todos: any[] = localData ? JSON.parse(localData) : dummyTodos;
 
   const [todosSTate, setTodosState] = useState(todos);
 
