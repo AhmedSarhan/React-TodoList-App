@@ -5,16 +5,17 @@ import './index.css';
 // local imports
 import TodoList from './components/TodoList';
 import NewTodo from './components/NewTodo';
-const todos = [
-  { id: 't1', text: 'Finish the module', done: false },
-  { id: 't2', text: 'have lunch', done: false },
-  { id: 't3', text: 'play games', done: false },
-  { id: 't4', text: 'go to bed', done: false },
-];
+
 const App: React.FC = () => {
+  const localData: any = localStorage.getItem('todos');
+  const todos: any[] = localData ? JSON.parse(localData) : [];
+
   const [todosSTate, setTodosState] = useState(todos);
 
-  const todoAddHandler = (text: string) => {
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todosSTate));
+  }, [todosSTate]);
+  const newTodoAddHandler = (text: string) => {
     setTodosState((prevTodos) => [
       ...prevTodos,
       { id: (Math.random() * 1000).toString(), text: text, done: false },
@@ -33,15 +34,60 @@ const App: React.FC = () => {
     dummyTodos[index].done = !dummyTodos[index].done;
     setTodosState(dummyTodos);
   };
+  const removeAllDoneHandler = () => {
+    const allTodos = [...todosSTate];
+    let undoneTodos = allTodos.filter((todo) => {
+      return todo.done === false;
+    });
+    console.log(undoneTodos);
+    setTodosState(undoneTodos);
+  };
+  const removeAllHandler = () => {
+    setTodosState([]);
+  };
   return (
     <div className="App">
       <h4>My TodoList App with ReactTS</h4>
-      <NewTodo onAddTodo={todoAddHandler} />
+      <NewTodo onAddTodo={newTodoAddHandler} />
       <TodoList
         todos={todosSTate}
         onDelete={deleteTodoHandler}
         onFinish={doneTodoHandler}
       />
+      {todosSTate.length > 0 && (
+        <div>
+          <button
+            onClick={removeAllDoneHandler}
+            style={{
+              backgroundColor: '#c0392b',
+              color: '#fff',
+              padding: '5px 15px',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              margin: '10px',
+              display: 'inline-block',
+            }}
+          >
+            Remove Done Todos
+          </button>
+          <button
+            onClick={removeAllHandler}
+            style={{
+              backgroundColor: '#2c3e50',
+              color: '#fff',
+              padding: '5px 15px',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              margin: '10px',
+              display: 'inline-block',
+            }}
+          >
+            Remove ALL Todos
+          </button>
+        </div>
+      )}
     </div>
   );
 };

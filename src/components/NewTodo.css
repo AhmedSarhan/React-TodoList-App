@@ -1,5 +1,12 @@
 .new-todo {
+    width: 90%;
+    margin: 5px auto;
     position: relative;
+}
+
+.new-todo .form-group {
+    width: 90%;
+    margin: 0 auto;
 }
 
 .new-todo label {
@@ -10,12 +17,13 @@
 .new-todo input[type=text] {
     padding: 3px 8px;
     margin-top: 10px;
+    width: 100%;
 }
 
 .new-todo button[type=submit] {
     position: absolute;
     top: 55%;
-    right: 0;
+    right: -6px;
     background: transparent;
     border: none;
     padding: 0;

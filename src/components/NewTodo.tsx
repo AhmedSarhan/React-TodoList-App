@@ -15,7 +15,7 @@ const NewTodo: React.FC<NewTodoProps> = (props) => {
   };
   return (
     <form className="new-todo" onSubmit={todoSubmitHandler}>
-      <div>
+      <div className="form-group">
         <label htmlFor="newTodo">Add a Todo</label>
         <input
           type="text"

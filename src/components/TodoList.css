@@ -1,3 +1,8 @@
+.todos {
+    width: 80%;
+    margin: 35px auto;
+}
+
 .single-todo {
     position: relative;
     box-shadow: 2px 2px 2px 2px #ccc;
